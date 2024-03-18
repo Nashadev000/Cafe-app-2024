@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppSQL.Listados.Listado_Tipos"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#ffedf2"
+                     Padding="10">
+            
+            <FlexLayout Direction="Row"
+                        JustifyContent="SpaceBetween">
+                <!-- Imagen a la izquierda -->
+                <Image Source="coffee2.png"
+                       WidthRequest="50" />
+                <!-- Botón a la derecha -->
+                <Button Text="Nuevo"
+                        BackgroundColor="#a8b6da"
+                        TextColor="WhiteSmoke"
+                        Clicked="btnNuevo_Clicked" />
+            </FlexLayout>
+            
+            <Label Text="Dulces Pecados"
+                   FontSize="28"
+                   HorizontalOptions="Center" />
+            <Image Source="coffee2.png"
+                   WidthRequest="150" />
+            <ListView x:Name="lvTipos"
+                      ItemSelected="lvTipos_ItemSelected"
+                      HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame CornerRadius="10"
+                                   Padding="20, 10"
+                                   IsClippedToBounds="False"
+                                   BackgroundColor="White"
+                                   HasShadow="True"
+                                   Margin="10, 5">
+                                <StackLayout VerticalOptions="FillAndExpand">
+                                    <Label Text="{Binding nombre}"
+                                           TextColor="Black"
+                                           FontSize="Large" />
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <!-- Columna para la imagen -->
+                                            <ColumnDefinition Width="*" />
+                                            <!-- Columna para precio y descripción -->
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <!-- Fila para la imagen -->
+                                            <RowDefinition Height="Auto" />
+                                            <!-- Fila para el precio -->
+                                            <RowDefinition Height="*" />
+                                            <!-- Fila para la descripción (con desplazamiento) -->
+                                        </Grid.RowDefinitions>
+                                        <Image Grid.Column="0"
+                                               WidthRequest="150"
+                                               HeightRequest="150"
+                                               Source="{Binding imagen}"
+                                               Margin="0" />
+                                        <StackLayout Grid.Column="1"
+                                                     Grid.RowSpan="3"
+                                                     Margin="10,0,0,0">
+                                            <!-- Precio -->
+                                            <Label Text="{Binding precio, StringFormat='Precio: S/ {0}'}" />
+                                            <!-- Descripción -->
+                                            <ScrollView>
+                                                <Label Text="{Binding descripcion}"
+                                                       VerticalOptions="StartAndExpand"
+                                                       FontSize="Small"
+                                                       TextColor="#58677F" />
+                                            </ScrollView>
+                                        </StackLayout>
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

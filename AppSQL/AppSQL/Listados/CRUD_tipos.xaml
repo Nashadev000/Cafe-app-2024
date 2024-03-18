@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppSQL.Listados.CRUD_tipos"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <ScrollView  Padding="20"
+                     BackgroundColor="#ffedf2">
+            <StackLayout>
+                <FlexLayout Direction="Row"
+                            JustifyContent="SpaceBetween">
+                    <ImageButton Source="regresar.png"
+                                 WidthRequest="30"
+                                 BackgroundColor="#ffedf2"
+                                 Clicked="btnRegresar_Clicked" />
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="EndAndExpand">
+                        <Button Text="Guardar"
+                                BackgroundColor="#a8b6da"
+                                TextColor="WhiteSmoke"
+                                Clicked="btnGuardar_Clicked" />
+                        <Button Text="Eliminar"
+                                BackgroundColor="#a8b6da"
+                                TextColor="WhiteSmoke"
+                                Clicked="btnEliminar_Clicked" />
+                    </StackLayout>
+                </FlexLayout>
+                
+                <Label Text="Tipo de Café"
+                       FontSize="28"
+                       HorizontalOptions="Center" />
+                <Image Source="coffee2.png"
+                       WidthRequest="150" />
+                <Label Text="Nombre"
+                       FontAttributes="Bold" />
+                <Entry x:Name="txtNombre"
+                       Text="{Binding nombre, Mode=TwoWay}"
+                       Placeholder="Nombre" />
+                <Label Text="Precio"
+                       FontAttributes="Bold" />
+                <Entry x:Name="txtPrecio"
+                       Keyboard="Numeric"
+                       Text="{Binding precio, StringFormat='Precio: S/ {0}', Mode=TwoWay}"
+                       Placeholder="Precio" />
+                <!-- <Entry x:Name="txtDescripcion" -->
+                <!--       Text="{Binding descripcion, Mode=TwoWay}" -->
+                <!--      Placeholder="Descripción" /> -->
+                <Label Text="Descripción"
+                       FontAttributes="Bold" />
+                <Frame BackgroundColor="White"
+                       BorderColor="#ABABAB"
+                       CornerRadius="10"
+                       Margin="0,10">
+                    <Editor Keyboard="Plain"
+                            x:Name="txtDescripcion"
+                            Text="{Binding descripcion, Mode=TwoWay}"
+                            AutoSize="TextChanges"
+                            Placeholder="Descripción del café"
+                            MaxLength="180" />
+                </Frame>
+                <Label Text="Imagen (URL)"
+                       FontAttributes="Bold" />
+                <Frame BackgroundColor="White"
+                       BorderColor="#ABABAB"
+                       CornerRadius="10"
+                       Margin="0,10">
+                    <Editor Keyboard="Plain"
+                            x:Name="txtImagen"
+                            Text="{Binding imagen, Mode=TwoWay}"
+                            AutoSize="TextChanges"
+                            Placeholder="Imagen del café"
+                            MaxLength="180" />
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
